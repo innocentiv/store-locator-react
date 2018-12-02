@@ -1,32 +1,218 @@
-.App {
-  text-align: center;
+.searchOpener {
+  border: solid 1px lightgray;
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+  margin: var(--padding);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+@media screen and (min-width: 900px) {
+  .searchOpener {
+      display: none;
+  }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.leftPanel {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: var(--padding);
+  padding: var(--padding);
+  position: absolute;
+  z-index: 20;
+  background-color: white;
+  height: calc(100vh - (var(--padding) * 2));
+  width: calc(100% - (var(--padding) * 2));
+  box-shadow: 4px 4px 4px lightgray;
+  will-change: transform;
+}
+
+.storesAndStoreDetails {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}
+
+@media screen and (min-width: 900px) {
+  .leftPanel.hiddenLight,
+  .leftPanel {
+      visibility: visible;
+      animation: slide-in-left;
+      width: 24rem;
+  }
+}
+
+
+.searchBox {
+  --border-thickness: 2px;
+  margin-bottom: 1rem;
+}
+.searchInputAndButtons {
+  display: flex;
+}
+.searchInputAndIcons {
+  display: flex;
+  border: solid var(--border-thickness) black;
+  margin-right: 0.5rem;
+  flex: 1;
+}
+.searchSuggestions {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  transform: translateY(calc(100% + 1px));
+}
+.searchSuggestions [open="true"] ul {
+  border: solid 1px lightgray;
+  box-shadow: 2px 2px 2px lightgray;
+}
+.searchSuggestions ul {
+  background-color: white;
+  padding: var(--padding);
+}
+.searchIcon {
+  width: var(--input-height);
+  height: var(--input-height);
+  padding: var(--padding);
+}
+.searchInput {
+  flex: 1;
+  position: relative;
+}
+.geolocalizeIcon {
+  height: calc(var(--input-height) + (var(--border-thickness) * 2));
+  width: calc(var(--input-height) + (var(--border-thickness) * 2));
+}
+
+.resultsNumber {
+  padding: var(--padding);
+}
+
+.storeDetails {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+.backButton {
+  background-color: black;
   color: white;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.backIcon {
+  width: var(--input-height);
+  height: var(--input-height); 
+  display: inline-block;
+}
+.backIcon svg {
+  stroke: white;
+  width: 100%;
+  height: 100%;
+}
+.storeDetails .store {
+  padding: var(--padding);
+}
+.storeDetails .store_name {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.storeDetails .store_mail,
+.storeDetails .store_phone {
+  display: flex;
+  align-items: center;
+}
+.storeDetails .store_mail {
+  margin-bottom: 0.25rem;
+}
+.storeDetails .store_phone {
+  margin-bottom: 0.75rem;
+}
+.storeDetails .icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.storeDetails .store_mail,
+.storeDetails .store_categories {
+  margin-bottom: 0.5rem;
+}
+.storeDetails .store_categories li {
+  display: inline;
+}
+.storeDetails .store_categories li::after {
+  content: ", ";
+}
+.storeDetails .store_categories li:last-child::after {
+  content: ".";
+}
+.storeDetails .store_categoriesTitle,
+.storeDetails .store_servicesTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
 }
 
-.App-link {
-  color: #61dafb;
+.storesList ul {
+  padding: var(--padding);
+  height: 100%;
+  overflow-y: scroll;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.storesList ul::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+.storesList ul::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.storesList ul::-webkit-scrollbar-thumb {
+  background-color: black;
+  outline: 1px solid slategrey;
+}
+.storesList .storeName {
+  margin-bottom: 0.5em;
+}
+.storesList .storePhone .icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.filterPanel {
+  padding: var(--padding);
+}
+.filter-panel_toggleBtn {
+  display: inline-flex;
+  align-items: center;
+}
+.filter-panel_toggleBtn_text {
+  margin-right: 0.5rem;
+}
+.filter-panel_arrow svg {
+  width: var(--input-height);
+  height: auto;
+  transition: transform 400ms;
+}
+.open .filter-panel_arrow svg {
+  transform: rotate(180deg);
+}
+.storeTypeBtn .icon,
+.removeIcon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mapWrapper {
+  height: 100vh;
 }
