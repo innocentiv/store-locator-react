@@ -24,6 +24,11 @@
   width: calc(100% - (var(--padding) * 2));
   box-shadow: 4px 4px 4px lightgray;
   will-change: transform;
+  animation: slide-out-right 0.3s forwards;
+}
+
+.leftPanel.open {
+  animation: slide-in-left 0.3s forwards;
 }
 
 .storesAndStoreDetails {
@@ -36,7 +41,7 @@
   .leftPanel.hiddenLight,
   .leftPanel {
       visibility: visible;
-      animation: slide-in-left;
+      animation: slide-in-left forwards;
       width: 24rem;
   }
 }
