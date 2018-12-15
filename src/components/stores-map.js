@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import MarkerClusterer from '../vendor/marker-clusterer.js';
-import {throttle} from '../utils.js';
 
 const mapStateToProps = (state) => ({
   stores: state.stores,
